@@ -66,8 +66,9 @@ export default class MakeEvent extends Component {
   }
 
   createWPEvent() {
-    this.setState({ loading: true });
-    fetch("http://gromdroid.nl/bslim/wp-json/gaauwe/v1/update-post", {
+    if(this.state.loc != "") {
+      this.setState({ loading: true });
+    fetch("http://bslim.nl/wp-json/app/v1/update-post", {
       method: "POST",
       headers: new Headers({
         Accept: "application/json",
@@ -88,8 +89,9 @@ export default class MakeEvent extends Component {
         address: this.state.loc
       }) // <-- Post parameters
     })
-      .then(response => response.json())
+      .then(response => response.text())
       .then(responseText => {
+        console.log(responseText)
         if (responseText == 200) {
           alert("Evenement succesvol bijgewerkt");
           this.props.navigation.dispatch(NavigationActions.back());
@@ -103,6 +105,9 @@ export default class MakeEvent extends Component {
       .catch(error => {
         console.error(error);
       });
+    } else {
+        this.errorMessage("Vergeet niet een locatie in te vullen")
+    }
     }
 
 

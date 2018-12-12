@@ -435,7 +435,7 @@ class Events extends Component {
                                   onPress: () => {
                                     this.setState({ loading: true });
                                     fetch(
-                                      "http://gromdroid.nl/bslim/wp-json/gaauwe/v1/delete-event?id=" +
+                                      "http://bslim.nl/wp-json/app/v1/delete-event?id=" +
                                         item.id,
                                       {
                                         method: "GET"

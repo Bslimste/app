@@ -358,7 +358,7 @@ class News extends Component {
                                           text: "OK",
                                           onPress: () => {
                                             fetch(
-                                              "http://gromdroid.nl/bslim/wp-json/gaauwe/v1/delete-post?id=" +
+                                              "http://bslim.nl/wp-json/app/v1/delete-post?id=" +
                                                 item.id
                                             );
                                             this._onRefresh();

@@ -6,7 +6,7 @@ export default class Api {
   static instance = null;
 
 
-  url = "http://gaauwe.nl:5000/";
+  url = "http://hokla.nl:5000/";
 
   static getInstance() {
     if (Api.instance == null) {
