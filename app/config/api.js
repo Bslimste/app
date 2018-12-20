@@ -6,7 +6,7 @@ export default class Api {
   static instance = null;
 
 
-  url = "http://hokla.nl:5000/";
+  url = "http://bslimapp.hokla.nl/";
 
   static getInstance() {
     if (Api.instance == null) {
