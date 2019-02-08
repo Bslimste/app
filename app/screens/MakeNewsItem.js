@@ -105,8 +105,7 @@ export default class MakeNewsItem extends Component {
             .then(res => res.json())
             .then(responseJson => {
               this.setState({ img: responseJson["guid"]["raw"] });
-              this.createWPArticle();
-              console.log(this.state.img);
+              this.createNewsItem();
             })
             .catch(error => {
               callBack(error);
@@ -124,6 +123,23 @@ export default class MakeNewsItem extends Component {
         this.errorMessage("Zorg ervoor dat u een internet verbinding heeft");
       }
     });
+  }
+
+  createNewsItem() {
+    let api = Api.getInstance();
+    userData = {
+      title: this.state.title,
+      content: this.state.content,
+      img: this.state.img
+    }
+    api.callApi("api/createNewsItemApp", "POST", userData, response => {
+      if(response['responseCode'] == 200) {
+        this.setState({ loading: false });
+        this.props.navigation.dispatch(NavigationActions.back());
+      } else {
+        this.setState({ loading: false });
+      }
+    })
   }
 
   handleBegin(dateTime) {

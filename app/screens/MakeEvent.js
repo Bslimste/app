@@ -97,6 +97,7 @@ export default class MakeEvent extends Component {
     })
       .then(response => response.text())
       .then(responseText => {
+        console.log(responseText)
         this.props.navigation.dispatch(NavigationActions.back());
         this.setState({ loading: false });
       })

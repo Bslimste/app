@@ -82,6 +82,7 @@ class News extends Component {
 
     let api = Api.getInstance();
     api.callApi("api/getAllNewsItems", "GET", {}, response => {
+      console.log(response)
       if (response["responseCode"] != 503) {
         if (response["responseCode"] == 200) {
           this.setState({
@@ -89,7 +90,9 @@ class News extends Component {
             fullArray: response["news"],
             loading: false
           });
-        }
+        } else {
+            this.setState({ refreshing: false, loading: false });
+          }
       } else {
         this.setState({ sleeping: true });
         setTimeout(() => {
@@ -155,6 +158,7 @@ class News extends Component {
     if (!this.state.sleeping) {
       let api = Api.getInstance();
       api.callApi("api/getAllNewsItems", "GET", {}, response => {
+        console.log(response)
         if (response["responseCode"] != 503) {
           if (response["responseCode"] == 200) {
             this.setState({
@@ -165,6 +169,8 @@ class News extends Component {
               loading: false,
               refreshing: false
             });
+          } else {
+            this.setState({ refreshing: false, loading: false });
           }
         } else {
           this.setState({ sleeping: true });
@@ -357,10 +363,9 @@ class News extends Component {
                                         {
                                           text: "OK",
                                           onPress: () => {
-                                            fetch(
-                                              "http://gromdroid.nl/bslim/wp-json/gaauwe/v1/delete-post?id=" +
-                                                item.id
-                                            );
+                                            let api = Api.getInstance();
+                                            api.callApi("api/deleteNewsTrigger?id=" + item.id, "GET", {}, response => {
+                                            })
                                             this._onRefresh();
                                           }
                                         }

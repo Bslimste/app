@@ -85,11 +85,11 @@ class LoginScreen extends Component {
   }
 
   setUser(value, id, clearance, wordpresskey) {
-    console.log("hallo");
     let localStorage = LocalStorage.getInstance();
     localStorage.storeItem("succesfull", true);
     this.props.navigation.dispatch(NavigationActions.back());
     localStorage.storeItem("userId", id);
+    console.log(wordpresskey);
     localStorage.storeItem("wordpresskey", wordpresskey);
     localStorage.storeItem("clearance", clearance);
     let api = Api.getInstance();
@@ -120,6 +120,7 @@ class LoginScreen extends Component {
           password: hash
         };
         api.callApi("login", "POST", userData, response => {
+          console.log(response)
           if (response["responseCode"] != 503) {
             if (response["boolean"] == "true") {
               this.setUser(
