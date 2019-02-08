@@ -53,7 +53,7 @@ export default class MakeNewsItem extends Component {
   }
 
   createWPArticle() {
-    fetch("http://gromdroid.nl/bslim/wp-json/gaauwe/v1/make-post", {
+    fetch("http://bslim.nl/wp-json/app/v1/make-post", {
       method: "POST",
       headers: new Headers({
         Accept: "application/json",
@@ -94,9 +94,9 @@ export default class MakeNewsItem extends Component {
         ) {
           RNFetchBlob.fetch(
             "POST",
-            "http://gromdroid.nl/bslim/wp-json/wp/v2/media",
+            "http://bslim.nl/wp-json/wp/v2/media",
             {
-              Authorization: "Basic YWRtaW46YnNsaW1faGFuemUh",
+              Authorization: "Basic YXBwOmFlYllCXjM0dDhsM05uTEFnbE9NYnRhWQ==",
               "Content-Type": +"image/jpeg",
               "Content-Disposition": "attachment; filename=hoi.jpg"
             },

@@ -77,7 +77,7 @@ export default class VideoPicker extends Component {
   };
 
   createWPArticle() {
-    fetch("http://gromdroid.nl/bslim/wp-json/gaauwe/v1/make-post", {
+    fetch("http://bslim.nl/wp-json/app/v1/make-post", {
       method: "POST",
       headers: new Headers({
         Accept: "application/json",
@@ -163,7 +163,7 @@ export default class VideoPicker extends Component {
           "POST",
           "http://gromdroid.nl/bslim/wp-json/wp/v2/media",
           {
-            Authorization: "Basic YWRtaW46YnNsaW1faGFuemUh",
+            Authorization: "Basic YXBwOmFlYllCXjM0dDhsM05uTEFnbE9NYnRhWQ==",
             "Content-Type": +mimeType,
             "Content-Disposition":
               "attachment; filename=" + fileName + "." + fileExtension

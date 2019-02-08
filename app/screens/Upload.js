@@ -75,10 +75,10 @@ class Upload extends Component {
     });
     RNFetchBlob.fetch(
       "POST",
-      "http://gromdroid.nl/wp/wp-json/wp/v2/media",
+      "http://bslim.nl/wp-json/wp/v2/media",
       {
         //// TODO: Real authorization instead of hardcoded base64 username:password
-        Authorization: "Basic YWRtaW46YnNsaW1faGFuemUh",
+        Authorization: "Basic YXBwOmFlYllCXjM0dDhsM05uTEFnbE9NYnRhWQ==",
         "Content-Type": +mimeType,
         "Content-Disposition":
           "attachment; filename=" + fileName + "." + fileExtension

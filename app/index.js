@@ -49,7 +49,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    OneSignal.init("893db161-0c60-438b-af84-8520b89c6d93");
+    OneSignal.init("88a41eb2-1403-4aa9-8989-c0b430286788");
     OneSignal.addEventListener("ids", this.onIds);
   }
 
