@@ -449,7 +449,7 @@ export const MyTabLoggedInAdmin = TabNavigator(
         tabBarLabel: "Deelnemers beheren",
         tabBarIcon: (
           <Image
-            style={{ width: 28, height: 26 }}
+            style={{ width: 28, height: 28 }}
             source={require("../assets/icons/checklistcolor.png")}
           />
         )
@@ -521,7 +521,7 @@ export const MyTabLoggedInAdmin = TabNavigator(
             activeIcon: (
               <Image
                 style={{ width: 28, height: 28 }}
-                source={require("../assets/icons/Deelnemers.png")}
+                source={require("../assets/icons/checklistcolor.png")}
               />
             )
           },

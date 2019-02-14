@@ -90,7 +90,7 @@ export default class CreateAdmin extends Component {
       username: this.state.wpUsername,
       password: this.state.wpPassword
     }; //change fetch url to bslim wordpress
-    fetch("http://gromdroid.nl/bslim/wp-json/gaauwe/v1/authenticate", {
+    fetch("http://bslim.nl/wp-json/app/v1/authenticate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -167,12 +167,12 @@ export default class CreateAdmin extends Component {
       let api = Api.getInstance();
       RNFetchBlob.fetch(
         "POST",
-        "http://gromdroid.nl/bslim/wp-json/wp/v2/media",
+        "http://bslim.nl/wp-json/wp/v2/media",
         {
           //// TODO: Real authorization instead of hardcoded base64 username:password
-          Authorization: "Basic YWRtaW46YnNsaW1faGFuemUh",
+          Authorization: "Basic YXBwOmFlYllCXjM0dDhsM05uTEFnbE9NYnRhWQ==",
           "Content-Type": +"image/jpeg",
-          "Content-Disposition": "attachment; filename=hoi.jpg"
+          "Content-Disposition": "attachment; filename=Foto.jpg"
           // here's the body you're going to send, should be a BASE64 encoded string
           // (you can use "base64"(refer to the library 'mathiasbynens/base64') APIs to make one).
           // The data will be converted to "byte array"(say, blob) before request sent.

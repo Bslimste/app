@@ -70,6 +70,7 @@ class Events extends Component {
 
     let api = Api.getInstance();
     api.callApi("api/getAllEvents", "POST", {}, response => {
+      console.log(response)
       if (response["responseCode"] != 503) {
         if (response["responseCode"] == 200) {
           let array = response["events"];;
@@ -105,6 +106,8 @@ class Events extends Component {
   	      				});
 				}
           });
+        } else {
+          this.setState({ refreshing: false, loading: false, data: [], fullArray: []})
         }
       } else {
         this.setState({ sleeping: true });
@@ -152,6 +155,7 @@ class Events extends Component {
     if (!this.state.sleeping) {
       let api = Api.getInstance();
       api.callApi("api/getAllEvents", "POST", {}, response => {
+        console.log(response)
         if (response["responseCode"] != 503) {
           if (response["responseCode"] == 200) {
             let array = response["events"];
@@ -187,9 +191,18 @@ class Events extends Component {
   	      				});
 				}
             });
+          } else {
+            this.setState({refreshing: false, loading: false})
           }
-        }
-      });
+        } else {
+        this.setState({ sleeping: true });
+        setTimeout(() => {
+          this.setState({ sleeping: false });
+        }, 3000);
+        this.errorMessage("Zorg ervoor dat u een internet verbinding heeft");
+      }
+      } 
+      );
     }
   }
 
@@ -435,7 +448,7 @@ class Events extends Component {
                                   onPress: () => {
                                     this.setState({ loading: true });
                                     fetch(
-                                      "http://gromdroid.nl/bslim/wp-json/gaauwe/v1/delete-event?id=" +
+                                      "http://bslim.nl/wp-json/app/v1/delete-event?id=" +
                                         item.id,
                                       {
                                         method: "GET"
